@@ -3,11 +3,11 @@ extends TextForgeMode
 
 func _initialize_mode() -> Error:
 	syntax_highlighter = CodeHighlighter.new()
-	syntax_highlighter.add_color_region(";", "", Color.WEB_GRAY, true)
-	syntax_highlighter.function_color = Color.WHITE
-	syntax_highlighter.number_color = Color.WHITE
-	syntax_highlighter.symbol_color = Color.AQUAMARINE
-	syntax_highlighter.member_variable_color = Color.WHITE
+	syntax_highlighter.add_color_region(";", "", U.get_syntax_color(U.SyntaxColors.COMMENT), true)
+	syntax_highlighter.function_color = U.get_syntax_color(U.SyntaxColors.DEFAULT)
+	syntax_highlighter.number_color = U.get_syntax_color(U.SyntaxColors.DEFAULT)
+	syntax_highlighter.symbol_color = U.get_syntax_color(U.SyntaxColors.SYMBOL)
+	syntax_highlighter.member_variable_color = U.get_syntax_color(U.SyntaxColors.DEFAULT)
 	comment_delimiters.append({
 		"start_key": ";",
 		"end_key": "",
@@ -29,6 +29,7 @@ func _initialize_mode() -> Error:
 		"line_only": false,
 	})
 	_enable_auto_format_feature()
+	
 	return OK
 
 
